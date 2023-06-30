@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container" id="cabecera">
+    <h1>Agregar Producto</h1>
+</div>
+<div>
+    <form method="POST">
+        {% csrf_token %}
+
+        <div class="mb-3" id="formulario">
+            <label for="nombre" class="form-label">Nombre del Producto:</label>
+            <input type="text" class="form-control" id="nombre" required>
+        </div>
+
+        <div class="mb-3" id="formulario">
+            <label for="descripcion" class="form-label">Descripcion:</label>
+            <textarea class="form-control" id="descripcion" rows="3" required></textarea>
+        </div>
+        <label for="precio">Precio:</label>
+        <div class="input-group mb-3" id="formulario">
+            <span class="input-group-text">S/</span>
+            <input type="number" class="form-control" id="precio" name="precio" step="0.01" required>
+        </div>
+
+        <input type="submit" class="btn btn-primary" value="Guardar Producto">
+    </form>
+</div>
+{% endblock %}

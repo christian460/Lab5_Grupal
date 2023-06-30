@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container" id="cabecera">
+  <h1>Lista de Productos</h1>
+</div>
+<div class="productos">
+
+  <!-- La siguiente linea de codigo ejecuta un for de python para poder ingresar la lista de productos
+      de la base de datos, gracias al diccionario ingresado por el view 'productos'-->
+
+  {% for producto in productos %}
+  <div class="producto">
+
+    <div class="container" >
+
+      <!-- Impresion de cada uno de los atributos de los productos: nombre, descripcion y precio
+            el '| title', es como un estilo que se le agrega a ese subtitulo, no es importante-->
+    
+      <div class="row">
+        <div class="col-sm-6 mb-3 mb-sm-0">
+          <div class="card w-50 mb-3">
+            <div class="card-body">
+              <h5 class="card-title">{{ producto.nombre | title }}</h5>
+              <p class="card-text">{{ producto.descripcion }}</p>
+              <h4 class="card-title">${{ producto.precio }}</a>
+            </div>
+          </div>
+        </div>
+    </div>
+
+  </div>
+  {% endfor%}
+
+</div>
+{% endblock %}
