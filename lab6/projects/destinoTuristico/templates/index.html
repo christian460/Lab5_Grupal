@@ -94,12 +94,21 @@
                 <li class="nav-item">
                     <a class="nav-link page-scroll" href="#contact">CONTACT</a>
                 </li>
+                {% if user.is_authenticated %}
                 <li class="nav-item">
-                    <a class="nav-link page-scroll" href="#contact">REGISTER</a>
+                    <a class="nav-link page-scroll">HELLO, {{user.username}}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link page-scroll" href="#contact">LOGIN</a>
+                    <a class="nav-link page-scroll" href="accounts/logout">LOGOUT</a>
                 </li>
+                {% else %}
+                <li class="nav-item">
+                    <a class="nav-link page-scroll" href="accounts/register">REGISTER</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link page-scroll" href="accounts/login">LOGIN</a>
+                </li>
+                {% endif %}
             </ul>
             <span class="nav-item social-icons">
                 <span class="fa-stack">
