@@ -8,3 +8,7 @@ def index(request):
 
 def agregar(request):
     return render(request,'add.html')
+
+def list(request):
+    dests = Destination.objects.all()
+    return render(request, 'list.html', {'dests': dests})
