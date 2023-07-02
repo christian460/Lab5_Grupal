@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+  <!-- Destination Details -->
+  <section class="destination_details">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4">
+          <div class="destination_image">
+            <img src="{{ dest.img.url }}" alt="{{ dest.name }}">
+          </div>
+        </div>
+        <div class="col-lg-8">
+          <div class="destination_content">
+            <div class="destination_title">{{ dest.name }}</div>
+            <div class="destination_desc">{{ dest.desc }}</div>
+            <div class="destination_price">{{ dest.price }}</div>
+            <div class="destination_offer">{{ dest.offer }}</div>
+            <div class="destination_edit">
+              <form method="post" action="{% url 'modificaciones' dest.id %}">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit">Guardar</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+{% endblock %}

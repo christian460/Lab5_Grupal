@@ -1,4 +1,6 @@
 from django.shortcuts import render
+from .forms import DestinationForm
+from django.shortcuts import render, get_object_or_404
 from .models import Destination
 # Create your views here.
 
@@ -12,3 +14,16 @@ def agregar(request):
 def list(request):
     dests = Destination.objects.all()
     return render(request, 'list.html', {'dests': dests})
+
+def modifications(request, dest_id):
+    dest = get_object_or_404(Destination, pk=dest_id)
+
+    if request.method == 'POST':
+        form = DestinationForm(request.POST, instance=dest)
+        if form.is_valid():
+            form.save()
+            # Redirigir o realizar otras acciones después de la edición exitosa
+    else:
+        form = DestinationForm(instance=dest)
+
+    return render(request, 'modificacion.html', {'form': form, 'dest': dest})
