@@ -1,21 +1,46 @@
+{% load static %}
+{% static "images" as baseUrl %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/bootstrap4/bootstrap.min.css' %}">
+	<link href="{% static 'plugins/font-awesome-4.7.0/css/font-awesome.min.css' %}" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" type="text/css" href="{% static 'plugins/OwlCarousel2-2.2.1/owl.carousel.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'plugins/OwlCarousel2-2.2.1/owl.theme.default.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'plugins/OwlCarousel2-2.2.1/animate.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'styles/main_styles.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'styles/responsive.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
     <title>Añadir</title>
 </head>
-<body>
-    <form action="agregar" method="post">
+<body >
+    <h2>Agregue Destinos</h2><br>
+    <form action="agregar" method="post" enctype="multipart/form-data">
         {% csrf_token %}
-        <input type="text" name="ciudad" placeholder="Ciudad"><br>
-        <label> Ingrese imagen: </label><input type="file" name="imagen"><br>
-        <input type="text" name="desc" placeholder="Descripcion"><br>
-        <input type="number" name="price" placeholder="Precio"><br>
-        <label> Esta en oferta: </label><input type="checkbox" name="offer" placeholder="Oferta"><br>
-
-        <input type="submit">
+        <div class="mb-3">
+            <label class="form-label">Ciudad:</label>
+            <input type="text" name="ciudad" class="form-control" placeholder="Ciudad">
+        </div>
+        <div class="mb-3">
+            <label> Ingrese imagen:</label>
+            <input type="file" name="imagen">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Descripcion:</label>
+            <input type="text" name="desc" class="form-control" placeholder="Descripcion">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Precio:</label>
+            <input type="number" name="price" class="form-control" placeholder="Precio">
+        </div>
+        <div class="mb-3 form-check">
+            <label class="form-check-label"> Esta en oferta: </label>
+            <input type="checkbox" name="offer" placeholder="Oferta"><br>
+        </div>
+        <input class="btn btn-info btn-sm" type="submit" value="Agregar">
     </form>
 </body>
 </html>

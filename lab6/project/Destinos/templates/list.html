@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+  <div class="destinations" id="destinations">
+    <div class="container">
+      <div class="row">
+        <div class="col text-center">
+          <div class="section_title">
+            <h2>Lista de destinos agregados:</h2>
+          </div>
+        </div>
+      </div>
+      <div class="row destinations_row">
+        <div class="col">
+          <div class="destinations_container item_grid">
+
+            <!-- Lista de destinos -->
+
+            <ol>
+              <div class="destination item"></div>
+              {% for dest in dests %}
+                <div class="destination_title">
+                  <a href="{% url 'modificaciones' dest.id %}"> <li>{{ dest.name | upper }}</li></a>
+                </div>
+              {% endfor %}
+              </div>
+            </ol>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}
