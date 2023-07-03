@@ -12,8 +12,7 @@ def agregar(request):
     if request.method == 'POST':
         destino = Destination()
         destino.name=request.POST['ciudad']
-        if request.FILES.get_img['imagen']:
-            destino.img = request.FILES['imagen']
+        destino.img=request.FILES.get('imagen')
         destino.desc=request.POST['desc']
         if 'offer' in request.POST:
             if request.POST['offer'] == 'on':
@@ -37,7 +36,6 @@ def modifications(request, dest_id):
         form = DestinationForm(request.POST, request.FILES, instance=dest)
         if form.is_valid():
             form.save()
-            redirect('/')
             return redirect('/')
             # Redirigir o realizar otras acciones después de la edición exitosa
     else:
