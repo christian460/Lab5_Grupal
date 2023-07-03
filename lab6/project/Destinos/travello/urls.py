@@ -6,4 +6,5 @@ urlpatterns = [
     path('agregar',views.agregar,name="agregar"),
     path('list', views.list, name="list"),
     path('destination/edit/<int:dest_id>/', views.modifications,name="modificaciones"),
+    path('destination/eliminar/<int:dest_id>/', views.eliminar, name="eliminar" )
 ]

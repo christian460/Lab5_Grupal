@@ -9,7 +9,22 @@ def index(request):
     return render(request,'index.html',{'dests': dests})
 
 def agregar(request):
-    return render(request,'add.html')
+    if request.method == 'POST':
+        destino = Destination()
+        destino.name=request.POST['ciudad']
+        if request.FILES.get_img['imagen']:
+            destino.img = request.FILES['imagen']
+        destino.desc=request.POST['desc']
+        if 'offer' in request.POST:
+            if request.POST['offer'] == 'on':
+                destino.offer = True
+        else:
+            destino.offer = False
+        destino.price=request.POST['price']
+        destino.save()
+        return redirect('/')
+    else:
+        return render(request,'add.html')
 
 def list(request):
     dests = Destination.objects.all()
@@ -29,3 +44,8 @@ def modifications(request, dest_id):
         form = DestinationForm(instance=dest)
 
     return render(request, 'modificacion.html', {'form': form, 'dest': dest})
+
+def eliminar(request, dest_id):
+    dest = get_object_or_404(Destination, pk=dest_id)
+    dest.delete()
+    return redirect('/')
