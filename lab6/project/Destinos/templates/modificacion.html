@@ -21,7 +21,8 @@
               <form method="post" action="{% url 'modificaciones' dest.id %}">
                 {% csrf_token %}
                 {{ form.as_p }}
-                <button type="submit">Guardar</button>
+                <button class="btn btn-info btn-sm" type="submit">Guardar</button>
+                <a class="btn btn-danger btn-sm" href="{% url 'eliminar' dest.id %}">Eliminar</a>
               </form>
             </div>
           </div>
