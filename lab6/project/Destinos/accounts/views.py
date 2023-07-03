@@ -27,7 +27,7 @@ def register(request):
         else:
             messages.info(request,'Password no coincide')
             return redirect('register')
-        return redirect('/')
+        
     else:
         return render(request, 'register.html')
 
