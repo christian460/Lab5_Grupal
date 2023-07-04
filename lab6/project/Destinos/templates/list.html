@@ -19,7 +19,7 @@
             <!-- Lista de destinos -->
 
             <ol>
-              <div class="destination item"></div>
+              <div style="padding-top: 100%;" class="destination item"></div>
               {% for dest in dests %}
                 <div class="destination_title">
                   <a href="{% url 'modificaciones' dest.id %}"> <li>{{ dest.name | upper }}</li></a>

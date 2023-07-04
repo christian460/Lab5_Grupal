@@ -33,7 +33,7 @@
 								<div class="logo"><a href="/">Travello</a></div>
 								<nav class="main_nav">
 									<ul class="d-flex flex-row align-items-start justify-content-start">
-<<<<<<< HEAD
+
 										<li class="active"><a href="/">Home</a></li>
 
 										{% if user.is_authenticated %}
@@ -42,14 +42,6 @@
 											{% endif %}
                       						<li>Hello, {{user}}</li>
                       						<li><a href="accounts/logout">Logout</a></li>
-=======
-										<li class="active"><a href="index.html">Home</a></li>
-
-										{% if user.is_authenticated %}
-										<li><a href="agregar">Agregar</a></li>
-										<li> Hello, {{user.first_name}}</li>
-										<li><a href="accounts/logout">Logout</a></li>
->>>>>>> master
 										{% else %}
                       						<li><a href="accounts/register">Register</a></li>
                       						<li><a href="accounts/login">Login</a></li>

@@ -1,9 +1,6 @@
 from django.shortcuts import render, redirect
-<<<<<<< HEAD
 from .forms import DestinationForm
 from django.shortcuts import render, get_object_or_404
-=======
->>>>>>> master
 from .models import Destination
 # Create your views here.
 
@@ -12,17 +9,10 @@ def index(request):
     return render(request,'index.html',{'dests': dests})
 
 def agregar(request):
-<<<<<<< HEAD
     if request.method == 'POST':
         destino = Destination()
         destino.name=request.POST['ciudad']
         destino.img=request.FILES.get('imagen')
-=======
-    if request.method == 'POST' and request.FILES['imagen']:
-        destino = Destination()
-        destino.name=request.POST['ciudad']
-        destino.img = request.FILES['imagen']
->>>>>>> master
         destino.desc=request.POST['desc']
         if 'offer' in request.POST:
             if request.POST['offer'] == 'on':
@@ -34,7 +24,6 @@ def agregar(request):
         return redirect('/')
     else:
         return render(request,'add.html')
-<<<<<<< HEAD
 
 def list(request):
     dests = Destination.objects.all()
@@ -58,8 +47,3 @@ def eliminar(request, dest_id):
     dest = get_object_or_404(Destination, pk=dest_id)
     dest.delete()
     return redirect('/')
-=======
-    
-def eliminar(request):
-    return render (request, 'eliminar.html')
->>>>>>> master
