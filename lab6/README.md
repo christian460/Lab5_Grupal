@@ -87,7 +87,20 @@
 #
 
 ## EJERCICIOS PROPUESTOS
-![Nuevo Proyecto GitHub](github_proyecto_programacion.png)
+- Deberán replicar la actividad del video donde se obtiene una plantilla de una aplicación de Destinos turísticos y adecuarla a un proyecto en blanco Django.
+- Luego trabajar con un modelo de tabla DestinosTuristicos donde se guarden nombreCiudad, descripcionCiudad, imagenCiudad, precioTour, ofertaTour (booleano). Estos destinos turísticos deberán ser agregados en una vista dinámica utilizando tags for e if.
+- Para ello crear una carpeta dentro del proyecto github colaborativo con el docente, e informar el link donde se encuentra.
+- Crear formularios de Añadir Destinos Turísticos, Modificar, Listar y Eliminar Destinos.
+- Eres libre de agregar CSS para decorar tu trabajo.
+- Ya sabes que el trabajo con Git es obligatorio. Revisa el avance de la teoría Django parte4
+- Index (index.html - views.py - urls.py)
+![index](imagenes_lab6/pagina1.jpg)
+![index](imagenes_lab6/pagina2.jpg)
+![index](imagenes_lab6/index.jpg)
+![index](imagenes_lab6/pagina2.jpg)
+- Login (login.html - views.py - urls.py)
+
+
 #
 
 ## REFERENCIAS
