@@ -195,6 +195,9 @@
 - Modificar Destinos (modificacion.html - views.py - urls.py)
 
 ![editar](imagenes_lab6/editar.jpg)
+
+![editar](imagenes_lab6/editar_c.jpg)
+
 ![editar](imagenes_lab6/editar_v.jpg)
 
     Por medio de get_object_or_404 podemos obtener el destino con el id que se quiere modificar al recibir la llamada POST se 
