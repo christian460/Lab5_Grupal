@@ -8,7 +8,7 @@ class Libro(models.Model):
     codigo = models.IntegerField()
     
     def __str__(self):
-        return self.nombre
+        return self.codigo
 
 class User(models.Model):
     nombre = models.CharField(max_length=50)
