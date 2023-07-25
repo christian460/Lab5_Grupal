@@ -1,11 +1,14 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+{% load static %}
+{% static "images" as baseUrl %}
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Book Store Template, Free CSS Template, CSS Website Layout</title>
 <meta name="keywords" content="" />
 <meta name="description" content="" />
-<link href="templatemo_style.css" rel="stylesheet" type="text/css" />
+<link href="{% static 'css/templatemo_style.css' %}" rel="stylesheet" type="text/css" />
+<link href="{% static 'css/style.css' %}" rel="stylesheet" type="text/css" />
 </head>
 <body>
 <!--  Free CSS Templates from www.templatemo.com -->
@@ -21,13 +24,12 @@
     	</ul>
     </div> <!-- end of menu -->
     
-    <div id="templatemo_header">
+    <div id="templatemo_header" style="background-image: url({% static 'images/templatemo_header_bg.jpg' %})">
     	<div id="templatemo_special_offers">
         	<p>
                 <span>25%</span> discounts for
         purchase over $80
         	</p>
-			<a href="subpage.html" style="margin-left: 50px;">Read more...</a>
         </div>
         
         
@@ -37,7 +39,6 @@
                 <li>Maece nas metus</li>
                 <li>In sed risus ac feli</li>
             </ul>
-            <a href="subpage.html" style="margin-left: 50px;">Read more...</a>
         </div>
     </div> <!-- end of header -->
     
@@ -81,63 +82,20 @@
         </div> <!-- end of content left -->
         
         <div id="templatemo_content_right">
+
+            {% for libro in libros %}
         	<div class="templatemo_product_box">
-            	<h1>Photography  <span>(by Best Author)</span></h1>
-   	      <img src="images/templatemo_image_01.jpg" alt="image" />
+            	<h1> {{libro.nombre}}  <span>(by {{libro.author}})</span></h1>
+   	            <img id="libros" src="{{libro.img.url}}" alt="image" />
                 <div class="product_info">
-                	<p>Etiam luctus. Quisque facilisis suscipit elit. Curabitur...</p>
-                  <h3>$55</h3>
-                    <div class="buy_now_button"><a href="subpage.html">Buy Now</a></div>
+                	<p>{{libro.desc}}</p>
+                    <div class="buy_now_button"><a href="subpage.html">Alquilar</a></div>
                     <div class="detail_button"><a href="subpage.html">Detail</a></div>
                 </div>
                 <div class="cleaner">&nbsp;</div>
             </div>
+            {% endfor %}
             
-            <div class="cleaner_with_width">&nbsp;</div>
-            
-            <div class="templatemo_product_box">
-            	<h1>Cooking  <span>(by New Author)</span></h1>
-       	    <img src="images/templatemo_image_02.jpg" alt="image" />
-                <div class="product_info">
-                	<p>Aliquam a dui, ac magna quis est eleifend dictum.</p>
-                    <h3>$35</h3>
-                    <div class="buy_now_button"><a href="subpage.html">Buy Now</a></div>
-                    <div class="detail_button"><a href="subpage.html">Detail</a></div>
-                </div>
-                <div class="cleaner">&nbsp;</div>
-            </div>
-            
-            <div class="cleaner_with_height">&nbsp;</div>
-            
-            <div class="templatemo_product_box">
-            	<h1>Gardening <span>(by Famous Author)</span></h1>
-   	      <img src="images/templatemo_image_03.jpg" alt="image" />
-                <div class="product_info">
-                	<p>Ut fringilla enim sed turpis. Sed justo dolor, convallis at.</p>
-                    <h3>$65</h3>
-                    <div class="buy_now_button"><a href="subpage.html">Buy Now</a></div>
-                    <div class="detail_button"><a href="subpage.html">Detail</a></div>
-                </div>
-                <div class="cleaner">&nbsp;</div>
-            </div>
-            
-            <div class="cleaner_with_width">&nbsp;</div>
-            
-            <div class="templatemo_product_box">
-            	<h1>Sushi Book  <span>(by Japanese Name)</span></h1>
-            	<img src="images/templatemo_image_04.jpg" alt="image" />
-                <div class="product_info">
-                	<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
-                    <h3>$45</h3>
-                    <div class="buy_now_button"><a href="subpage.html">Buy Now</a></div>
-                    <div class="detail_button"><a href="subpage.html">Detail</a></div>
-                </div>
-                <div class="cleaner">&nbsp;</div>
-            </div>
-            
-            <div class="cleaner_with_height">&nbsp;</div>
-            
-            <a href="subpage.html"><img src="images/templatemo_ads.jpg" alt="ads" /></a>
         </div> <!-- end of content right -->
     
     	<div class="cleaner_with_height">&nbsp;</div>

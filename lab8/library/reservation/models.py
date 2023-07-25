@@ -6,6 +6,8 @@ class Libro(models.Model):
     nombre = models.CharField(max_length=50)
     author = models.CharField(max_length=50)
     codigo = models.IntegerField()
+    img = models.ImageField(upload_to='pics', default='')
+    desc = models.TextField(default="")
     
     def __str__(self):
         return self.nombre

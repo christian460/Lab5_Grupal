@@ -5,7 +5,7 @@ from  rest_framework import serializers
 class LibroSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Libro
-        fields = ['url', 'nombre', 'author', 'codigo']
+        fields = ['url', 'nombre', 'author', 'codigo', 'img', 'desc']
 
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
