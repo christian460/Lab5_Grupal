@@ -1,6 +1,8 @@
 from django.shortcuts import render
+from reservation.models import Libro
 
 # Create your views here.
 
 def index(request):
-    return render(request,'index.html',{})
+    libros = Libro.objects.all()
+    return render(request,'index.html',{'libros':libros})
