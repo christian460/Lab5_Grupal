@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div style="padding-left: 100px;">
+        <h1>Eliga el elemento a borrar</h1><br>
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">Codigo</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Cantidad</th>
+                <th scope="col"></th>
+                <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+                {% for product in producs %}
+                <tr>
+                <th scope="row">{{product.codigo}}</th>
+                <td>{{product.nombre}}</td>
+                <td>{{product.cantidad}}</td>
+                <td> <a class="btn btn-primary mb-3" href='modificar/{{product.id}}'>Modifcar</a> </td>
+                <td> <a class="btn btn-danger mb-3" href='eliminar/{{product.id}}'>Borrar</a> </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

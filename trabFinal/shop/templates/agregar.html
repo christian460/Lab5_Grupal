@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% block content %}
+<link href="static/css/mystyle.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+<div style="padding-left: 100px;">
+    <h1>Agregar Productos</h1><br>
+    <h3>Ingrese los datos del producto:</h3><br>
+    <form method="post"  enctype="multipart/form-data">{% csrf_token %}
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Codigo:</label>
+            <input type="number" class="form-control" name="codigo" aria-describedby="emailHelp">
+        </div><br>
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Nombre:</label>
+            <input type="text" class="form-control" name="nombre" aria-describedby="emailHelp">
+        </div><br>
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Imagen:</label>
+            <input type="file" class="form-control" name="img" aria-describedby="emailHelp">
+        </div><br>
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Descripcion:</label>
+            <input type="text" class="form-control" name="desc" aria-describedby="emailHelp">
+        </div><br>
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Precio:</label>
+            <input type="number" step="any" class="form-control" name="precio" aria-describedby="emailHelp">
+        </div><br>
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Cantidad:</label>
+            <input type="number" class="form-control" name="cantidad" aria-describedby="emailHelp">
+        </div><br>
+        <div class="mb-3 form-check">
+        <button type="submit" class="btn btn-primary">Agregar</button>
+    </form>
+</div>
+{% endblock %}
