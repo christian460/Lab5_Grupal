@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1 style="padding-left: 100px;">Modificar el articulo</h1>
+<div class="card" style="padding-left: 35%;">
+    <img src="{{prod.img.url}}" class="card-img-top" style="width: 400px; height: 400px">
+    <div class="card-body">
+        <h3>{{prod.nombre}}</h3><br>
+        <p class="card-text">{{prod.descripcion}}</p>
+        <h5>El codigo del producto es {{prod.codigo}}
+        <h5>Cuesta S/.{{prod.precio}}</h5>
+        <h5>Cuentas con {{prod.cantidad}} unidades</h5>
+    </div><br>
+</div>
+<form style="padding-left: 100px;" method="post" enctype="multipart/form-data">{% csrf_token %}
+    <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Codigo:</label>
+        <input type="number" class="form-control" name="codigo" aria-describedby="emailHelp" value="{{prod.codigo}}">
+    </div><br>
+    <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Nombre:</label>
+        <input type="text" class="form-control" name="nombre" aria-describedby="emailHelp" value="{{prod.nombre}}">
+    </div><br>
+    <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Imagen:</label>
+        <input type="file" class="form-control" name="img" aria-describedby="emailHelp" value="{{prod.img.url}}">
+    </div><br>
+    <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Descripcion:</label>
+        <input type="text" class="form-control" name="desc" aria-describedby="emailHelp" value="{{prod.descripcion}}">
+    </div><br>
+    <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Precio:</label>
+        <input type="number" step="any" class="form-control" name="precio" aria-describedby="emailHelp" value="{{prod.precio}}">
+    </div><br>
+    <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Cantidad:</label>
+        <input type="number" class="form-control" name="cantidad" aria-describedby="emailHelp" value="{{prod.cantidad}}">
+    </div><br>
+    <div class="mb-3 form-check">
+    <button type="submit" class="btn btn-primary">Modificar</button>
+</form>
+
+{% endblock %}
