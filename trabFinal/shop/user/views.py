@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 
 # Formulario para crear usuario
+from .forms import CustomUserCreationForm
 from django.contrib.auth.forms import UserCreationForm
 
 # Formulario para comprobar si un usuario existe, inciar sesion
@@ -23,7 +24,7 @@ from django.contrib.auth import authenticate
 
 def registro(request):
     if request.method == 'GET':
-        return render(request, 'signup.html', {"form": UserCreationForm})
+        return render(request, 'registrar.html', {"form": CustomUserCreationForm})
 
     else:
         if request.POST["password1"] == request.POST["password2"]:
@@ -36,9 +37,9 @@ def registro(request):
                 return redirect('lista')
             # El error de IntegrityError => error especifico cuando se quiere crear un superuser que ya existe
             except IntegrityError:
-                return render(request, 'signup.html', {"form": UserCreationForm, "error": "Username already exists."})
+                return render(request, 'registrar.html', {"form": CustomUserCreationForm, "error": "El usuario ya existe"})
 
-        return render(request, 'signup.html', {"form": UserCreationForm, "error": "Passwords did not match."})
+        return render(request, 'registrar.html', {"form": CustomUserCreationForm, "error": "Las contraseñas no coinciden"})
 
 
 def cerrar_sesion(request):
@@ -48,14 +49,17 @@ def cerrar_sesion(request):
 
 def inciar_sesion(request):
     if request.method == 'GET':
-        return render(request, 'signup.html', {"form": UserCreationForm})
+        return render(request, 'inciar_sesion.html', {"form": AuthenticationForm})
 
     else:
         user = authenticate(
             request, username=request.POST['username'], password=request.POST['password'])
 
         if user is None:
-            return render(request, 'signup.html', {
-                "form": UserCreationForm
+            return render(request, 'inciar_sesion.html', {
+                "form": AuthenticationForm,
                 'error': 'Nombre de usuario o contraseña no valida'
                 })
+        else:
+            login(request, user)
+            return redirect('lista')

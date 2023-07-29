@@ -5,11 +5,11 @@
 
 {{error}}
 
-<form action="/signup/" method="POST">
+<form action="/inciar_sesion/" method="POST">
   {% csrf_token %}
   {{form.as_p}}
   <button>
-    signup
+    signin
   </button>
 </form>
 {% endblock %}
