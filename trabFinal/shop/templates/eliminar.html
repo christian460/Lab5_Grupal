@@ -12,7 +12,7 @@
                 <h5>Cuesta S/.{{prod.precio}}</h5>
                 <h5>Cuentas con {{prod.cantidad}} unidades</h5>
             </div><br>
-            <form method="post">
+            <form method="post">{% csrf_token %}
                 <button type="submit" class="btn btn-primary">Eliminar</button>
             </form>
         </div>
