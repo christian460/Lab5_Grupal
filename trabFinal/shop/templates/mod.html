@@ -9,35 +9,52 @@
         <h5>El codigo del producto es {{prod.codigo}}
         <h5>Cuesta S/.{{prod.precio}}</h5>
         <h5>Cuentas con {{prod.cantidad}} unidades</h5>
+        {% if prod.oferta %}
+            <h5>Esta en oferta</h5>
+        {% else %}
+            <h5>No esta en oferta</h5>
+        {% endif %}
     </div><br>
 </div>
-<form style="padding-left: 100px;" method="post" enctype="multipart/form-data">{% csrf_token %}
-    <div class="mb-3">
-        <label for="exampleInputEmail1" class="form-label">Codigo:</label>
-        <input type="number" class="form-control" name="codigo" aria-describedby="emailHelp" value="{{prod.codigo}}">
-    </div><br>
-    <div class="mb-3">
-        <label for="exampleInputEmail1" class="form-label">Nombre:</label>
-        <input type="text" class="form-control" name="nombre" aria-describedby="emailHelp" value="{{prod.nombre}}">
-    </div><br>
-    <div class="mb-3">
-        <label for="exampleInputEmail1" class="form-label">Imagen:</label>
-        <input type="file" class="form-control" name="img" aria-describedby="emailHelp" value="{{prod.img.url}}">
-    </div><br>
-    <div class="mb-3">
-        <label for="exampleInputEmail1" class="form-label">Descripcion:</label>
-        <input type="text" class="form-control" name="desc" aria-describedby="emailHelp" value="{{prod.descripcion}}">
-    </div><br>
-    <div class="mb-3">
-        <label for="exampleInputEmail1" class="form-label">Precio:</label>
-        <input type="number" step="any" class="form-control" name="precio" aria-describedby="emailHelp" value="{{prod.precio}}">
-    </div><br>
-    <div class="mb-3">
-        <label for="exampleInputEmail1" class="form-label">Cantidad:</label>
-        <input type="number" class="form-control" name="cantidad" aria-describedby="emailHelp" value="{{prod.cantidad}}">
-    </div><br>
-    <div class="mb-3 form-check">
-    <button type="submit" class="btn btn-primary">Modificar</button>
-</form>
-
+<div name="form">
+    <form style="padding-left: 100px;" method="post" enctype="multipart/form-data">{% csrf_token %}
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Codigo:</label>
+            <input type="number" class="form-control" name="codigo" aria-describedby="emailHelp" value="{{prod.codigo}}">
+        </div><br>
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Nombre:</label>
+            <input type="text" class="form-control" name="nombre" aria-describedby="emailHelp" value="{{prod.nombre}}">
+        </div><br>
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Imagen:</label>
+            <input type="file" class="form-control" name="img" aria-describedby="emailHelp" value="{{prod.img.url}}">
+        </div><br>
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Descripcion:</label>
+            <input type="text" class="form-control" name="desc" aria-describedby="emailHelp" value="{{prod.descripcion}}">
+        </div><br>
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Precio:</label>
+            <input type="number" step="any" class="form-control" name="precio" aria-describedby="emailHelp" value="{{prod.precio}}">
+        </div><br>
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">Cantidad:</label>
+            <input type="number" class="form-control" name="cantidad" aria-describedby="emailHelp" value="{{prod.cantidad}}">
+        </div><br>
+        {% if prod.oferta %}
+            <div class="form-check">
+                <label class="form-check-label" for="flexCheckDefault">Oferta:</label>
+                <input class="form-check-input" type="checkbox" name="oferta" checked>
+            </div><br>
+        {% else %}
+            <div class="form-check">
+                <label class="form-check-label" for="flexCheckDefault">Oferta:</label>
+                <input class="form-check-input" type="checkbox" name="oferta">
+            </div><br>
+        {% endif %}
+        <div class="mb-3 form-check">
+        <button type="submit" class="btn btn-primary">Modificar</button>
+    </form>
+</div><br>
 {% endblock %}

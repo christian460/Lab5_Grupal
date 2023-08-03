@@ -9,6 +9,7 @@ class Producto(models.Model):
     img = models.ImageField(upload_to='pics', default='')
     precio = models.DecimalField(max_digits=10, decimal_places=2)
     cantidad = models.PositiveIntegerField(default=0)
+    oferta = models.BooleanField(default=False)
 
     def __str__(self):
         return self.nombre
