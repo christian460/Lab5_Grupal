@@ -1,5 +1,4 @@
-<!--Mi lista aqui va -->
-<app-header></app-header>
+<!--Mi lista aquí va -->
 <h2>Lista de Productos:</h2>
 <ul>
   <li *ngFor="let produc of productos">
@@ -21,3 +20,9 @@
     </div>
   </li>
 </ul>
+
+<!-- Agrega un enlace para dirigirse a la página de agregar productos -->
+<a routerLink="/agregar" class="btn btn-primary">Agregar Producto</a>
+
+<!-- Agrega el router-outlet para cargar los componentes según las rutas -->
+<router-outlet></router-outlet>
