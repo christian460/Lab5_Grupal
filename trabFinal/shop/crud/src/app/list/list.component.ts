@@ -1,14 +1,13 @@
 import { Component } from '@angular/core';
-import { ApiService } from './api.service';
+import { ApiService } from '../api.service';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],
+  selector: 'app-list',
+  templateUrl: './list.component.html',
+  styleUrls: ['./list.component.css'],
   providers: [ApiService]
 })
-
-export class AppComponent {
+export class ListComponent {
   productos: any[] = [];
 
   constructor(private api: ApiService) {

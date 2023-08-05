@@ -15,5 +15,12 @@ export class ApiService {
     return this.http.get(this.baseurl+'/producto/', 
     {headers: this.httpHeaders});
   }
+  obtenerProducto(id: number): Observable<any> {
+    return this.http.get(`${this.baseurl}/productos/${id}/`);
+  }
+
+  eliminarProducto(id: number): Observable<any> {
+    return this.http.delete(`${this.baseurl}/productos/${id}/`);
+  }
 }
 

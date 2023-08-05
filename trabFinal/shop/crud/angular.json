@@ -25,9 +25,34 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.css"
+              "src/assets/css/style.css",
+              "src/assets/css/menu.css",
+              "src/assets/css/bootstrap.css",
+              "src/assets/css/animate.min.css",
+              "src/assets/css/flexslider.css",
+              "src/assets/css/font-awesome.css",
+              "src/assets/css/ken-burns.css",
+              "src/assets/css/owl.carousel.css"
             ],
-            "scripts": []
+            "scripts": [
+              "src/assets/js/bootstrap.js",
+              "src/assets/js/custom.js",
+              "src/assets/js/easing.js",
+              "src/assets/js/imagezoom.js",
+              "src/assets/js/jquery-2.2.3.min.js",
+              "src/assets/js/jquery-scrolltofixed-min.js",
+              "src/assets/js/jquery.classycountdown.js",
+              "src/assets/js/jquery.flexslider.js",
+              "src/assets/js/jquery.jscrollpane.min.js",
+              "src/assets/js/jquery.knob.js",
+              "src/assets/js/jquery.marquee.min.js",
+              "src/assets/js/jquery.menu-aim.js",
+              "src/assets/js/jquery.throttle.js",
+              "src/assets/js/main.js",
+              "src/assets/js/minicart.js",
+              "src/assets/js/move-top.js",
+              "src/assets/js/owl.carousel.js"
+            ]
           },
           "configurations": {
             "production": {

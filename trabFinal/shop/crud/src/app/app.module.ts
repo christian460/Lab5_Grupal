@@ -6,10 +6,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { AgregarComponent } from './agregar/agregar.component';
+import { FooterComponent } from './footer/footer.component';
+import { EliminarComponent } from './eliminar/eliminar.component';
+import { ListComponent } from './list/list.component';
+import { ModificarComponent } from './modificar/modificar.component';
 
 
 @NgModule({
-  declarations: [    AppComponent, HeaderComponent, AgregarComponent
+  declarations: [    AppComponent, HeaderComponent, AgregarComponent, FooterComponent, EliminarComponent, ListComponent, ModificarComponent
   ],
   imports: [
     BrowserModule,
