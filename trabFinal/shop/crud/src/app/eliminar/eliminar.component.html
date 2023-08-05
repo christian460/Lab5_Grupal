@@ -1,0 +1,17 @@
+<div class="container" style="padding-left: 100px;">
+    <h1>Eliminar Producto</h1><br>
+    <h3>¿Está seguro de que desea eliminar este producto?</h3><br>
+    <div class="card" style="padding-left: 35%;">
+        <img [src]="prod.img.url" class="card-img-top" style="width: 400px; height: 400px">
+        <div class="card-body">
+            <h3>{{ prod.nombre }}</h3><br>
+            <p class="card-text">{{ prod.descripcion }}</p>
+            <h5>El código del producto es {{ prod.codigo }}</h5>
+            <h5>Cuesta S/.{{ prod.precio }}</h5>
+            <h5>Cuentas con {{ prod.cantidad }} unidades</h5>
+        </div><br>
+        <form (ngSubmit)="eliminarProducto()">
+            <button type="submit" class="btn btn-primary">Eliminar</button>
+        </form>
+    </div>
+</div>
