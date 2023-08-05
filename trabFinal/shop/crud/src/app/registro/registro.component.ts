@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../auth.service';
 
@@ -7,39 +7,42 @@ import { AuthService } from '../auth.service';
   templateUrl: './registro.component.html',
   styleUrls: ['./registro.component.css']
 })
-export class RegistroComponent {
+export class RegistroComponent implements OnInit {
   nombre: string = '';
   direccion: string = '';
   telefono: string = '';
-  dni: number = 0;
+  dni: number | null = null;
   password1: string = '';
   password2: string = '';
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(private authService: AuthService, private router: Router) { }
 
-  registrarse() {
-    if (this.password1 === this.password2) {
-      const nuevoCliente = {
-        nombre: this.nombre,
-        direccion: this.direccion,
-        telefono: this.telefono,
-        dni: this.dni,
-        password1: this.password1,
-        password2: this.password2
-      };
+  ngOnInit(): void {
+  }
 
-      this.authService.registrarCliente(nuevoCliente).subscribe(
-        (data: any) => {
-          // El registro fue exitoso, redirige a donde necesites
+  registrarUsuario(): void {
+    if (this.password1 !== this.password2) {
+      console.error('Las contraseñas no coinciden');
+      return;
+    }
+
+    const usuario = {
+      username: this.nombre,
+      direccion: this.direccion,
+      telefono: this.telefono,
+      dni: this.dni,
+      password: this.password1
+    };
+    console.error(usuario);
+    this.authService.registrarUsuario(usuario)
+      .subscribe(
+        () => {
+          console.log('Usuario registrado con éxito');
           this.router.navigate(['/']);
         },
-        (error: any) => {
-          // El registro falló, maneja el error aquí
-          console.log('Error de registro:', error);
+        error => {
+          console.error('Error al registrar usuario:', error);
         }
       );
-    } else {
-      console.log('Las contraseñas no coinciden');
-    }
   }
 }

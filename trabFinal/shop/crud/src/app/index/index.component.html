@@ -126,7 +126,7 @@
 			<div *ngFor="let produc of productos">
 			<div class="col-sm-3 mb-3 mb-sm-0">
 				<div class="card" style="border: 0px;">
-					<img src="{{produc.img.url}}" class="card-img-top" style="width: 200px; height: 200px">
+					<img [src]="produc.img" class="card-img-top" style="width: 200px; height: 200px">
 					<div class="card-body">
 						<h5 class="card-title">{{produc.nombre}}</h5>
 						<p class="card-text">{{produc.descripcion}}</p>

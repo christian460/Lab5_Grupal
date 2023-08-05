@@ -19,15 +19,6 @@ export class LoginComponent {
       password: this.password
     };
 
-    this.authService.iniciarSesion(credenciales).subscribe(
-      (data: any) => {
-        // Inicio de sesión exitoso, redirige a donde necesites
-        this.router.navigate(['/']);
-      },
-      (error: any) => {
-        // El inicio de sesión falló, maneja el error aquí
-        console.log('Error de inicio de sesión:', error);
-      }
-    );
+
   }
 }

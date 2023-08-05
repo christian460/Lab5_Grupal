@@ -21,6 +21,7 @@ export class EliminarComponent implements OnInit {
     this.http.get<any>(`http://localhost:8000/producto/${this.productoId}/`).subscribe(
       (data) => {
         this.prod = data;
+        console.log(this.prod.img)
       },
       (error) => {
         console.error('Error al obtener los detalles del producto:', error);
