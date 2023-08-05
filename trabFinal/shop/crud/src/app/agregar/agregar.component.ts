@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { NgForm } from '@angular/forms'; // Agrega esta importación
 import { HttpClient } from '@angular/common/http';
 
 @Component({
@@ -8,38 +7,46 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./agregar.component.css']
 })
 export class AgregarComponent {
-  codigo: number = 0;
-  nombre: string = '';
-  img: File | null = null;
-  desc: string = '';
-  precio: number = 0;
-  cantidad: number = 0;
+  nuevoProducto: any = {
+    codigo: 0,
+    nombre: '',
+    descripcion: '',
+    img: null,
+    precio: 0,
+    cantidad: 0,
+    oferta: false
+  };
+  selectedFile: File | null = null;
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) { }
 
-  submitForm(agregarForm: NgForm) {
-    if (agregarForm.invalid) {
-      return; // Si el formulario no es válido, no hacer nada
-    }
+  ngOnInit(): void {
+  }
 
+  agregarProducto(): void {
     const formData = new FormData();
-    formData.append('codigo', this.codigo.toString());
-    formData.append('nombre', this.nombre);
-    if (this.img) {
-      formData.append('img', this.img, this.img.name);
+    formData.append('codigo', this.nuevoProducto.codigo.toString());
+    formData.append('nombre', this.nuevoProducto.nombre);
+    formData.append('descripcion', this.nuevoProducto.descripcion);
+    if (this.selectedFile) {
+      formData.append('img', this.selectedFile, this.selectedFile.name);
     }
-    formData.append('desc', this.desc);
-    formData.append('precio', this.precio.toString());
-    formData.append('cantidad', this.cantidad.toString());
+    formData.append('precio', this.nuevoProducto.precio.toString());
+    formData.append('cantidad', this.nuevoProducto.cantidad.toString());
+    formData.append('oferta', this.nuevoProducto.oferta.toString());
 
-    this.http.post('http://127.0.0.1:8000//agregar/', formData).subscribe(
-      (response) => {
-        console.log('Producto agregado exitosamente:', response);
-        // Aquí podrías realizar alguna redirección o mostrar un mensaje de éxito
-      },
-      (error) => {
-        console.error('Error al agregar el producto:', error);
-      }
-    );
+    this.http.post('http://localhost:8000/producto/', formData)
+      .subscribe(
+        (response) => {
+          console.log('Producto agregado con éxito:', response);
+          // Puedes redirigir al usuario a la lista de productos o realizar otra acción
+        },
+        (error) => {
+          console.error('Error al agregar el producto:', error);
+        }
+      );
+  }
+  onFileSelected(event: any): void {
+    this.selectedFile = event.target.files[0] as File;
   }
 }

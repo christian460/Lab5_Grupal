@@ -1,37 +1,37 @@
 <div class="container" style="padding-left: 100px;">
     <h1>Agregar Productos</h1><br>
     <h3>Ingrese los datos del producto:</h3><br>
-    <form #agregarForm="ngForm" (ngSubmit)="submitForm(agregarForm)" enctype="multipart/form-data">
+    <form (ngSubmit)="agregarProducto()" enctype="multipart/form-data">
         <div class="mb-3">
             <label for="codigo" class="form-label">Codigo:</label>
-            <input type="number" class="form-control" name="codigo" [(ngModel)]="codigo" id="codigo" required>
+            <input type="number" class="form-control" name="codigo" [(ngModel)]="nuevoProducto.codigo" id="codigo" required>
         </div><br>
         <div class="mb-3">
             <label for="nombre" class="form-label">Nombre:</label>
-            <input type="text" class="form-control" name="nombre" [(ngModel)]="nombre" id="nombre">
+            <input type="text" class="form-control" name="nombre" [(ngModel)]="nuevoProducto.nombre" id="nombre">
         </div><br>
         <div class="mb-3">
             <label for="img" class="form-label">Imagen:</label>
-            <input type="file" class="form-control" name="img" [(ngModel)]="img" id="img">
+            <input type="file" class="form-control-file" name="img" (change)="onFileSelected($event)" id="img" required>
         </div><br>
         <div class="mb-3">
-            <label for="desc" class="form-label">Descripcion:</label>
-            <input type="text" class="form-control" name="desc" [(ngModel)]="desc" id="desc">
+            <label for="descripcion" class="form-label">Descripcion:</label>
+            <input type="text" class="form-control" name="descripcion" [(ngModel)]="nuevoProducto.descripcion" id="descripcion" required>
         </div><br>
         <div class="mb-3">
             <label for="precio" class="form-label">Precio:</label>
-            <input type="number" step="any" class="form-control" name="precio" [(ngModel)]="precio" id="precio">
+            <input type="number" step="any" class="form-control" name="precio" [(ngModel)]="nuevoProducto.precio" id="precio" required>
         </div><br>
         <div class="mb-3">
             <label for="cantidad" class="form-label">Cantidad:</label>
-            <input type="number" class="form-control" name="cantidad" [(ngModel)]="cantidad" id="cantidad">
+            <input type="number" class="form-control" name="cantidad" [(ngModel)]="nuevoProducto.cantidad" id="cantidad" required>
         </div><br>
         <div class="form-check">
-            <label class="form-check-label" for="flexCheckDefault">Oferta:</label>
-            <input class="form-check-input" type="checkbox" name="oferta">
+            <label class="form-check-label" for="flexCheckDefault" for="oferta">Oferta:</label>
+            <input class="form-check-input" id="oferta" type="checkbox" name="oferta" [(ngModel)]="nuevoProducto.oferta">
         </div><br>
         <div class="mb-3 form-check">
-            <button type="submit" class="btn btn-primary">Agregar</button>
+            <button type="submit" class="btn btn-primary">Agregar Producto</button>
         </div>
     </form>
 </div>
