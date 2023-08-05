@@ -19,6 +19,11 @@ def agregar(request):
         producto.descripcion=request.POST['desc']
         producto.precio=request.POST['precio']
         producto.cantidad=request.POST['cantidad']
+        if 'oferta' in request.POST:
+            if request.POST['oferta'] == 'on':
+                producto.oferta = True
+        else:
+            producto.oferta = False
         producto.save()
         return redirect('/')
     else:
@@ -35,6 +40,11 @@ def modificar(request,pro_id):
         prod.descripcion=request.POST['desc']
         prod.precio=request.POST['precio']
         prod.cantidad=request.POST['cantidad']
+        if 'oferta' in request.POST:
+            if request.POST['oferta'] == 'on':
+                prod.oferta = True
+        else:
+            prod.oferta = False
         prod.save()
         return redirect('/')
     else:
