@@ -1,0 +1,54 @@
+<h1 style="padding-left: 100px;">Modificar el artículo</h1>
+
+<div class="card" style="padding-left: 35%;">
+    <img src="{{prod.img.url}}" class="card-img-top" style="width: 400px; height: 400px">
+    <div class="card-body">
+        <h3>{{ prod.nombre }}</h3><br>
+        <p class="card-text">{{ prod.descripcion }}</p>
+        <h5>El código del producto es {{ prod.codigo }}</h5>
+        <h5>Cuesta S/.{{ prod.precio }}</h5>
+        <h5>Cuentas con {{ prod.cantidad }} unidades</h5>
+        <h5 *ngIf="prod.oferta">Esta en oferta</h5>
+        <h5 *ngIf="!prod.oferta">No está en oferta</h5>
+    </div><br>
+</div>
+
+<div name="form">
+    <form style="padding-left: 100px;" (ngSubmit)="modificarProducto()" enctype="multipart/form-data">
+        <div class="mb-3">
+            <label for="codigo" class="form-label">Código:</label>
+            <input type="number" class="form-control" name="codigo" [(ngModel)]="prod.codigo">
+        </div><br>
+        <div class="mb-3">
+            <label for="nombre" class="form-label">Nombre:</label>
+            <input type="text" class="form-control" name="nombre" [(ngModel)]="prod.nombre">
+        </div><br>
+        <div class="mb-3">
+            <label for="img" class="form-label">Imagen:</label>
+            <input type="file" class="form-control" name="img" (change)="onFileSelected($event)">
+        </div><br>
+        <div class="mb-3">
+            <label for="desc" class="form-label">Descripción:</label>
+            <input type="text" class="form-control" name="desc" [(ngModel)]="prod.descripcion">
+        </div><br>
+        <div class="mb-3">
+            <label for="precio" class="form-label">Precio:</label>
+            <input type="number" step="any" class="form-control" name="precio" [(ngModel)]="prod.precio">
+        </div><br>
+        <div class="mb-3">
+            <label for="cantidad" class="form-label">Cantidad:</label>
+            <input type="number" class="form-control" name="cantidad" [(ngModel)]="prod.cantidad">
+        </div><br>
+        <div class="form-check">
+            <label class="form-check-label" for="oferta">Oferta:</label>
+            <input class="form-check-input" type="checkbox" name="oferta" [(ngModel)]="prod.oferta">
+        </div><br>
+        <div class="mb-3 form-check">
+            <button type="submit" class="btn btn-primary">Modificar</button>
+        </div>
+    </form>
+</div><br>
+<div *ngIf="modificacionExitosa" class="alert alert-success" role="alert">
+    El producto ha sido modificado exitosamente.
+</div>
+<button *ngIf="modificacionExitosa" class="btn btn-primary" (click)="regresarInicio()">Regresar al Inicio</button>

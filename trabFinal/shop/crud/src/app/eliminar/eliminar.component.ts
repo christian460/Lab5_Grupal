@@ -1,42 +1,44 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ApiService } from '../api.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-eliminar',
   templateUrl: './eliminar.component.html',
-  styleUrls: ['./eliminar.component.css'],
-  providers: [ApiService]
+  styleUrls: ['./eliminar.component.css']
 })
 export class EliminarComponent implements OnInit {
-  prod: any;
-
-  constructor(private route: ActivatedRoute, private api: ApiService, private router: Router) {}
-
-  ngOnInit() {
-    this.route.params.subscribe(params => {
-      const productoId = +params['id'];
-      this.api.obtenerProducto(productoId).subscribe(
-        response => {
-          this.prod = response;
-        },
-        error => {
-          console.error('Error al obtener el producto:', error);
-        }
-      );
-    });
+  productoId: number = 0;
+  prod: any = {};
+  constructor(private route: ActivatedRoute, private http: HttpClient, private router: Router) { }
+  ngOnInit(): void {
+    const idParam = this.route.snapshot.paramMap.get('id');
+    if (idParam !== null) {
+      this.productoId = +idParam;
+    } else {
+      console.log("No puede ser null")
+    }
+    this.http.get<any>(`http://localhost:8000/producto/${this.productoId}/`).subscribe(
+      (data) => {
+        this.prod = data;
+      },
+      (error) => {
+        console.error('Error al obtener los detalles del producto:', error);
+      }
+    );
   }
 
-  eliminarProducto() {
-    if (confirm('¿Está seguro de que desea eliminar este producto?')) {
-      this.api.eliminarProducto(this.prod.id).subscribe(
-        response => {
-          this.router.navigate(['/']);
+  eliminarProducto(): void {
+    this.http.delete(`http://localhost:8000/producto/${this.productoId}/`)
+      .subscribe(
+        () => {
+          console.log('Producto eliminado con éxito');
+          this.router.navigate(['']);
         },
-        error => {
+        (error) => {
           console.error('Error al eliminar el producto:', error);
         }
       );
-    }
   }
 }
+
