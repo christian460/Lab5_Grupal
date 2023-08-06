@@ -1,23 +1,25 @@
 <h2>Lista de Productos:</h2>
-<div style="background-color: white; height: 100%;">
-<ul>
-  <li *ngFor="let produc of productos">
-    <div class="col-sm-3 mb-3 mb-sm-0">
-      <div class="card" style="border: 0px;">
-        <img [src]="produc.img" class="card-img-top" style="width: 200px; height: 200px">
-        <div class="card-body">
-          <h5 class="card-title">{{produc.nombre}}</h5>
-          <p class="card-text">{{produc.descripcion}}</p>
-          <h5>S/.{{produc.precio}}</h5><br>
-          <form action="#" method="post">
-            <input type="hidden" name="cmd" value="_cart" />
-            <input type="hidden" name="add" value="1" />
-            <input type="hidden" name="w3ls_item" value="{{produc.nombre}}" />
-            <input type="hidden" name="amount" value="{{produc.precio}}" />
-          </form>
+<div style="background-color: white; height: 800px">
+  <ul>
+    <li *ngFor="let produc of productos">
+      <div class="col-sm-3 mb-3 mb-sm-0">
+        <div class="card" style="border: 0px;">
+          <img [src]="produc.img" class="card-img-top" style="width: 200px; height: 200px">
+          <div class="card-body">
+            <h5 class="card-title">{{produc.nombre}}</h5>
+            <p class="card-text">{{produc.descripcion}}</p>
+            <h5>S/.{{produc.precio}}</h5><br>
+            <form action="#" method="post">
+              <input type="hidden" name="cmd" value="_cart" />
+              <input type="hidden" name="add" value="1" />
+              <input type="hidden" name="w3ls_item" value="{{produc.nombre}}" />
+              <input type="hidden" name="amount" value="{{produc.precio}}" />
+            </form>
+            <button class="btn btn-primary" (click)="irAModificar(produc.url)">Modificar</button>
+            <button class="btn btn-danger" (click)="irAEliminar(produc.url)">Eliminar</button>
+          </div>
         </div>
       </div>
-    </div>
-  </li>
-</ul>
+    </li>
+  </ul>
 </div>
