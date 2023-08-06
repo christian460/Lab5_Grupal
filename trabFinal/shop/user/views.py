@@ -18,6 +18,10 @@ from django.contrib.auth import logout
 
 # Autenticar usuario
 from django.contrib.auth import authenticate
+from .models import Cliente
+from django.contrib.auth.models import User
+from rest_framework import viewsets
+from .serializer import ClienteSerializer, UserSerializer
 
 
 # Create your views here.
@@ -63,3 +67,12 @@ def inciar_sesion(request):
         else:
             login(request, user)
             return redirect('lista')
+
+class ClienteViewSet(viewsets.ModelViewSet):
+    queryset = Cliente.objects.all()
+    serializer_class = ClienteSerializer
+
+class UserViewSet(viewsets.ModelViewSet):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+

@@ -11,7 +11,5 @@ urlpatterns = [
     path('modificar/<int:pro_id>/',views.modificar, name="modificar"),
     path('listar',views.lista, name="lista"),
     path('eliminar/<int:pro_id>/',views.eliminar, name="eliminar"),
-    path('admin/', admin.site.urls),
     path('', include(router.urls)),
-    path('api-auth/', include('rest_framework.urls', namespace='rest_framework'))
 ]
